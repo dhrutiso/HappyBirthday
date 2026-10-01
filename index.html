@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2B3BE0">
+<meta name="format-detection" content="telephone=no">
+<title>Happy Birthday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2B3BE0; --yellow:#FFE45E; --pink:#FF8FB1; --paper:#F7F5FF; --ink:#14123A; --card:#FFFFFF; --line:#D9D5F5;
+  --display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  padding-left:env(safe-area-inset-left,0px);
+  padding-right:env(safe-area-inset-right,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--paper:#14123A;--ink:#F7F5FF;--card:#1E1B52;--line:#3A3590;}
+}
+:root[data-theme="dark"]{--paper:#14123A;--ink:#F7F5FF;--card:#1E1B52;--line:#3A3590;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;overflow-x:hidden;overflow-wrap:break-word;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+h1,h2,h3{font-family:var(--display);line-height:1.02;margin:0}
+button{font:inherit;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;min-height:44px}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+
+/* HERO */
+.hero{background:var(--blue);color:var(--yellow);padding:clamp(2rem,6vw,5rem) 1.25rem 3rem;text-align:center;position:relative;overflow:hidden;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero h1{font-weight:800;font-size:clamp(3rem,13vw,9rem);letter-spacing:-.03em;max-width:12ch;margin:0 auto}
+.hero p.sub{color:#fff;font-size:1.2rem;margin:1rem auto 0;max-width:34ch}
+.cake{width:min(320px,80vw);margin:2rem auto 0;display:block;cursor:pointer}
+.flame{transform-origin:center bottom;transform-box:fill-box;animation:flick 1.1s ease-in-out infinite alternate}
+.flame:nth-of-type(2){animation-delay:.25s}.flame:nth-of-type(3){animation-delay:.5s}
+@keyframes flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.88,1.1) rotate(3deg)}}
+.out .flame{animation:none;opacity:0;transition:opacity .25s}
+.smoke{opacity:0}
+.out .smoke{animation:smoke 1.4s ease-out forwards}
+@keyframes smoke{0%{opacity:.7;transform:translateY(0)}100%{opacity:0;transform:translateY(-26px)}}
+.btn{background:var(--yellow);color:var(--ink);border:0;border-radius:999px;padding:.9rem 1.6rem;font-weight:600;margin-top:1.5rem}
+.btn:hover{background:#fff}
+.wish{min-height:3rem;margin-top:1rem;color:#fff;font-family:var(--display);font-size:1.5rem}
+
+/* SECTIONS */
+section.block{max-width:880px;margin:0 auto;padding:clamp(3rem,8vw,6rem) 1.25rem 0}
+section.block h2{font-size:clamp(2rem,6vw,3.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+section.block > p.lede{margin:0 0 2rem;max-width:52ch;opacity:.8}
+
+/* REASONS */
+.reasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:1rem}
+.reason{aspect-ratio:1/1;border:0;border-radius:22px;padding:1.1rem;text-align:left;color:#14123A;font-family:var(--display);font-weight:500;font-size:1.15rem;line-height:1.2;display:flex;align-items:center;justify-content:center;transition:transform .35s}
+.reason .front{font-size:2.6rem}
+.reason .back{display:none}
+.reason[aria-pressed="true"] .front{display:none}
+.reason[aria-pressed="true"] .back{display:block}
+.reason[aria-pressed="true"]{transform:rotate(-1.5deg)}
+.reason:nth-child(4n+1){background:var(--yellow)}
+.reason:nth-child(4n+2){background:var(--pink)}
+.reason:nth-child(4n+3){background:#B9C0FF}
+.reason:nth-child(4n){background:#9EF0C8}
+
+/* TIMELINE */
+.timeline{list-style:none;margin:0;padding:0 0 0 1.4rem;border-left:3px solid var(--blue)}
+.timeline li{position:relative;padding:0 0 2rem 1.2rem}
+.timeline li::before{content:"";position:absolute;left:-2.05rem;top:.45rem;width:.95rem;height:.95rem;border-radius:50%;background:var(--yellow);border:3px solid var(--blue)}
+.timeline time{font-weight:600;opacity:.7;display:block}
+.timeline h3{font-size:1.5rem;margin:.1rem 0 .25rem}
+.timeline p{margin:0;max-width:56ch}
+.timeline p+p{margin-top:.6rem}
+
+/* LETTER */
+.letter{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:clamp(1.5rem,5vw,3rem);font-size:1.15rem;max-width:62ch}
+.letter p{margin:0 0 1.1rem}
+.letter .sign{font-family:var(--display);font-size:1.6rem;margin:1.5rem 0 0}
+
+/* OWN WORDS */
+.own{background:var(--blue);color:#fff;border-radius:28px;padding:clamp(1.5rem,5vw,3rem);max-width:62ch;font-size:1.15rem}
+.own p{margin:0 0 1.1rem}
+.own p:last-child{margin:0;font-family:var(--display);font-size:1.5rem;line-height:1.2;color:var(--yellow)}
+
+/* GIFTS */
+.gift-wrap{text-align:left}
+.gift-btn{background:var(--blue);color:var(--yellow);margin-top:0}
+.gift-btn:hover{background:var(--ink);color:var(--yellow)}
+.tickets{display:none;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:1rem;margin-top:1.5rem}
+.tickets.open{display:grid}
+.ticket{background:var(--yellow);color:#14123A;border-radius:16px;padding:1.1rem 1.2rem;border-left:10px dashed var(--blue)}
+.ticket h3{font-size:1.25rem;margin-bottom:.2rem}
+.ticket p{margin:0;font-size:.98rem}
+
+footer{text-align:center;padding:4rem 1.25rem 3rem;opacity:.7}
+img,svg,canvas{max-width:100%}
+@media (max-width:480px){body{font-size:1rem}.hero{padding-bottom:2.5rem}.letter,.own{border-radius:20px}.reason{aspect-ratio:auto;min-height:150px}}
+canvas#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+/* Tablet (iPad) */
+@media (min-width:768px){
+  body{font-size:1.125rem}
+  section.block{max-width:960px;padding-left:2rem;padding-right:2rem}
+  .reasons{grid-template-columns:repeat(3,1fr)}
+  .tickets{grid-template-columns:repeat(2,1fr)}
+  .cake{width:360px}
+  .letter,.own{max-width:none}
+}
+/* Laptop / desktop */
+@media (min-width:1100px){
+  section.block{max-width:1120px}
+  .reasons{grid-template-columns:repeat(4,1fr)}
+  .tickets{grid-template-columns:repeat(2,1fr)}
+  .cake{width:400px}
+  .timeline{max-width:820px}
+  .letter,.own{max-width:820px}
+}
+/* Phone in landscape */
+@media (max-height:500px) and (orientation:landscape){
+  .hero{min-height:auto;padding-top:1.5rem}
+  .hero h1{font-size:clamp(2.2rem,8vw,4rem)}
+  .cake{width:150px;margin-top:1rem}
+}
+@media (prefers-reduced-motion:reduce){.flame{animation:none}html{scroll-behavior:auto}.reason{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1 id="title"></h1>
+  <p class="sub" id="sub"></p>
+  <svg class="cake" id="cake" viewBox="0 0 300 270" role="img" aria-label="Birthday cake with three lit candles">
+    <ellipse cx="150" cy="248" rx="140" ry="14" fill="#14123A" opacity=".35"/>
+    <rect x="30" y="170" width="240" height="72" rx="14" fill="#FF8FB1"/>
+    <rect x="55" y="118" width="190" height="62" rx="14" fill="#FFE45E"/>
+    <rect x="80" y="70" width="140" height="56" rx="14" fill="#F7F5FF"/>
+    <path d="M30 186 q12 18 24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+    <path d="M80 92 q10 14 20 0 t20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="#FF8FB1" stroke-width="7" stroke-linecap="round"/>
+    <g>
+      <rect x="108" y="36" width="10" height="38" rx="3" fill="#2B3BE0"/>
+      <rect x="145" y="30" width="10" height="44" rx="3" fill="#2B3BE0"/>
+      <rect x="182" y="36" width="10" height="38" rx="3" fill="#2B3BE0"/>
+      <path class="flame" d="M113 32 c-9-10 -2-19 0-26 c2 7 9 16 0 26z" fill="#FFB020"/>
+      <path class="flame" d="M150 26 c-9-10 -2-19 0-26 c2 7 9 16 0 26z" fill="#FFB020"/>
+      <path class="flame" d="M187 32 c-9-10 -2-19 0-26 c2 7 9 16 0 26z" fill="#FFB020"/>
+      <g class="smoke" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+        <path d="M113 30 q-5-8 0-14"/><path d="M150 24 q-5-8 0-14"/><path d="M187 30 q-5-8 0-14"/>
+      </g>
+    </g>
+  </svg>
+  <button class="btn" id="blow" type="button">Blow out the candles</button>
+  <div class="wish" id="wish" aria-live="polite"></div>
+</header>
+
+<main>
+  <section class="block" aria-labelledby="r-h">
+    <h2 id="r-h">Things I feel, but don't always say</h2>
+    <p class="lede">Tap a card. These are just a few things I carry in my heart.</p>
+    <div class="reasons" id="reasons"></div>
+  </section>
+
+  <section class="block" aria-labelledby="o-h">
+    <h2 id="o-h">I don't know how to say this, but…</h2>
+    <p class="lede">So I'm just going to write it the way I feel it.</p>
+    <div class="own" id="own"></div>
+  </section>
+
+  <section class="block" aria-labelledby="t-h">
+    <h2 id="t-h">What I will never forget</h2>
+    <p class="lede" id="t-lede"></p>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <section class="block" aria-labelledby="l-h">
+    <h2 id="l-h">A letter for you</h2>
+    <div class="letter" id="letter"></div>
+  </section>
+
+  <section class="block gift-wrap" aria-labelledby="g-h">
+    <h2 id="g-h">Your gifts</h2>
+    <p class="lede">Each one is valid, no expiry, no excuses.</p>
+    <button class="btn gift-btn" id="giftBtn" type="button" aria-expanded="false">Open your gifts</button>
+    <div class="tickets" id="tickets"></div>
+  </section>
+</main>
+
+<footer id="foot"></footer>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+/* ============ EDIT THIS PART ============ */
+const CONFIG = {
+  name: "Bablu",
+  from: "Dhruti",
+  tagline: "Keyur, my Sweetheart. The most caring person I know.",
+  wish: "Make a wish, Bablu. Then keep scrolling.",
+  reasons: [
+    "You are the most caring person I know.",
+    "You remember every small thing, even more than I do.",
+    "You crossed thousands of kilometres for me.",
+    "You fly to me when my mood is low.",
+    "You are calm, and you make me calm.",
+    "With you, there is never any tension.",
+    "You are sweet in the smallest ways.",
+    "With you, I can be emotional without holding back.",
+    "With you, I can cry freely.",
+    "However busy you are, you are always there for me.",
+    "Most importantly, you never act strong in front of me.",
+    "I feel safest whenever you are around."
+  ],
+  ownWords: [
+    "I was already happy with my family and my life before I met you. I never felt like I needed someone to complete me.",
+    "But then you came into my life\u2026 and somehow, things just changed.",
+    "Even when I\u2019m with my whole family, sometimes I still don\u2019t feel completely happy until I\u2019ve talked to you. I don\u2019t know how to explain it, but somewhere in my mind, I always feel like you should be there too\u2026 with me and my family.",
+    "Now, whenever something happens in my day, you are the first person I want to tell.",
+    "If something really exciting happens, I want to tell you.\nIf something horrible happens, I want to tell you.\nIf I\u2019m having a very good day, I want to tell you.\nIf something hurts me, I want to tell you.",
+    "Even the most random little thing that happens\u2026 somehow, I feel like I should tell you.",
+    "I was never like this before. I used to keep most of my emotions inside. I wouldn\u2019t easily tell people what I was feeling.",
+    "But with you, I don\u2019t know\u2026 it just comes naturally. I can tell you when I\u2019m happy, sad, excited, angry, confused, or just having a bad day.",
+    "And when we don\u2019t talk, or something feels wrong between us, honestly, those are some of the worst moments for me.",
+    "I don\u2019t know exactly when you became this important to me. I just know that now, having you in my life has become something I genuinely need.",
+    "I don\u2019t know if I can explain exactly what you\u2019ve become to me\u2026",
+    "I just know that now, when I think about my life, my family, my happiness, and all the little moments in my day, somehow I always want you to be there too. \u2764\ufe0f"
+  ],
+  timelineLede: "The things I never want to forget.",
+  memories: [
+    { date: "The first time you cared about my headache", title: "You always checked on my headache", text: "Whenever I had a headache, you would message me and ask how I was feeling. It was such a small thing, but I remember thinking, “Someone is actually noticing these little things about me.”" },
+    { date: "The first time someone cared for me like you did", title: "You took care of me while travelling", text: "I remember how carefully you took care of me while we were travelling, especially because of my vomiting issue. You kept checking on me and making sure I was okay. I had never really experienced someone taking care of me like that before." },
+    { date: "The first time you went looking for medicine for me", title: "You went looking for my medicine", text: "I had a fever, and I had actually forgotten about the medicine myself. But you didn’t. You went looking for it and then stayed awake the whole night taking care of me. I still remember that feeling… someone was worrying about me even when I wasn’t worrying about myself." },
+    { date: "The first time your anger actually mattered to me", title: "The first time I cared that you were upset", text: "That time at Polo Forest, when you got angry with me, something felt different. I realised I had never felt this way when someone was upset with me. I genuinely didn’t enjoy anything because you weren’t okay with me.\nThat was probably the first time I realised how much you actually mattered to me." },
+    { date: "The first time you got on a flight for me", title: "You came when I needed you the most", text: "I know you probably won’t accept this, but I know why you came after Mansi passed away. You came because my mood wasn't okay and you wanted to make me feel better.\nYou travelled all those kilometres just to be there with me. I will never forget that. ❤️" },
+    { date: "The first time I fell asleep in your arms", title: "The first time I felt that kind of peace", text: "The first time I fell asleep in your arms, I felt a kind of peace I can't really explain.\nFor a moment, it felt like my papa was right there with me. That same feeling of being completely safe and protected.\nEven now, whenever I remember that moment, I still feel that same peace. ❤️" }
+  ],
+  letter: [
+    "Happy birthday Love",
+    "You are the most caring person I know. You notice what I forget to say, and you remember what I forget to remember. Even the smallest things stay with you.",
+    "The first time my mood wasn't good, you got on a flight and crossed thousands of kilometres just to be with me. You have done it so many times since. I never have to ask. You just come.",
+    "With you, nothing feels heavy. You are calm, sweet and tension-free, and you are emotional in a way that makes me feel safe to be emotional too. Thank you for being my peace.",
+    "I hope this year brings you all the love you give away so easily. I will be right here for every bit of it."
+  ],
+  gifts: [
+    { title: "Your favourite dinner", text: "You choose the place. My treat. ❤️" },
+    { title: "A weekend with zero tension", text: "No work, no stress, no planning from your side. Just relax — I’ll handle everything. ❤️" },
+    { title: "A long hug & a kiss", text: "Validity: One day. Anytime. Unlimited. No questions asked. ❤️" },
+    { title: "A promise I actually want to keep", text: "If something about me hurts you or you don’t like it, tell me. I’ll listen, I’ll understand, and I’ll genuinely change it — not just for a day, but forever. ❤️" }
+  ]
+};
+/* ======================================== */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+document.title = "Happy birthday, Keyur";
+$("title").textContent = "Happy birthday, " + CONFIG.name;
+$("sub").textContent = CONFIG.tagline;
+$("t-lede").textContent = CONFIG.timelineLede;
+$("foot").textContent = "Made with love by " + CONFIG.from + ".";
+
+$("reasons").innerHTML = CONFIG.reasons.map(r =>
+  `<button class="reason" type="button" aria-pressed="false"><span class="front" aria-hidden="true">&#10084;&#65039;</span><span class="back">${esc(r)}</span></button>`
+).join("");
+$("reasons").addEventListener("click", e => {
+  const b = e.target.closest(".reason"); if (!b) return;
+  b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
+});
+
+$("own").innerHTML = CONFIG.ownWords.map(p => `<p>${esc(p).replace(/\n/g,"<br>")}</p>`).join("");
+
+$("timeline").innerHTML = CONFIG.memories.map(m =>
+  `<li><time>${esc(m.date)}</time><h3>${esc(m.title)}</h3>${m.text.split("\n").map(t=>`<p>${esc(t)}</p>`).join("")}</li>`
+).join("");
+
+$("letter").innerHTML = CONFIG.letter.map(p => `<p>${esc(p)}</p>`).join("") +
+  `<p class="sign">Forever yours,<br>${esc(CONFIG.from)}</p>`;
+
+$("tickets").innerHTML = CONFIG.gifts.map(g =>
+  `<div class="ticket"><h3>${esc(g.title)}</h3><p>${esc(g.text)}</p></div>`
+).join("");
+$("giftBtn").addEventListener("click", () => {
+  const t = $("tickets"); const open = t.classList.toggle("open");
+  $("giftBtn").setAttribute("aria-expanded", open);
+  $("giftBtn").textContent = open ? "Hide gifts" : "Open your gifts";
+  if (open) burst(60);
+});
+
+/* Confetti */
+const cv = $("confetti"), ctx = cv.getContext("2d");
+let parts = [], raf = null;
+function size(){ cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; }
+size(); addEventListener("resize", size);
+const colors = ["#FFE45E","#FF8FB1","#2B3BE0","#9EF0C8","#B9C0FF"];
+function burst(n){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const d = devicePixelRatio;
+  for (let i=0;i<n;i++) parts.push({
+    x: cv.width/2, y: cv.height*0.35, r: (4+Math.random()*6)*d,
+    vx: (Math.random()-.5)*14*d, vy: (-Math.random()*13-3)*d,
+    c: colors[i%colors.length], rot: Math.random()*6, vr: (Math.random()-.5)*.4, life: 0
+  });
+  if (!raf) raf = requestAnimationFrame(tick);
+}
+function tick(){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  parts.forEach(p=>{
+    p.vy += .35*devicePixelRatio; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c;
+    ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6); ctx.restore();
+  });
+  parts = parts.filter(p => p.y < cv.height + 40 && p.life < 220);
+  raf = parts.length ? requestAnimationFrame(tick) : null;
+  if (!parts.length) ctx.clearRect(0,0,cv.width,cv.height);
+}
+
+/* Candles */
+let blown = false;
+function blow(){
+  if (blown) return; blown = true;
+  $("cake").classList.add("out");
+  $("blow").style.display = "none";
+  $("wish").textContent = CONFIG.wish;
+  burst(140);
+  setTimeout(()=>burst(80), 350);
+}
+$("blow").addEventListener("click", blow);
+$("cake").addEventListener("click", blow);
+</script>
+</body>
+</html>
